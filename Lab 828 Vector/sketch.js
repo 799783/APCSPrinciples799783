@@ -9,7 +9,7 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
-  loadBalls(200);
+  loadBalls(50);
 }
 
 function draw() {
@@ -19,7 +19,7 @@ function draw() {
 
 function loadBalls(n){
   for(var i=0; i<n; i++){
-    balls[i]= new Ball(random(width), random(height),random(-8,8), random(-8,8));
+    balls[i]= new Ball(random(0,800), random(200,800),random(-8,8),random(-8,8));
   }
 }
 

@@ -5,8 +5,8 @@ class Ball{
     this.loc= createVector(x,y);
     this.vel = createVector(dx,dy);
     this.clr = color(random(255),random(255),random(255));
-    this.acc=createVector(0,1);
-    this.w= random(10,70);
+    this.acc=createVector(0,.24);
+    //this.w= random(10,70);
 
   }
   run(){
@@ -26,6 +26,7 @@ class Ball{
     }
     if(this.loc.y>height){
       this.vel.y = -this.vel.y;
+      this.loc.y=height-2
     }
   }
 
@@ -35,7 +36,7 @@ class Ball{
   }
   render(){
       fill(this.clr);
-      ellipse(this.loc.x, this.loc.y, 11, 11);
+      ellipse(this.loc.x, this.loc.y, 50, 50);
     }
 
   }
