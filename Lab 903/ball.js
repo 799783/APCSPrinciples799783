@@ -8,7 +8,9 @@ class Ball{
     this.acc=createVector(0,.24);
     this.w=15;
     this.id=id;
-    if (this.id<0){this.w=50}
+    if (this.id<0){
+      this.w=50
+    }
 
   }
   run(){
@@ -33,6 +35,8 @@ class Ball{
   }
 
   update(){
+    this.loc.add(this.vel);
+    this.vel.add(this.acc);
     var distTomainBall;
     if(this.id>=0){
       distTomainBall = this.loc.dist(mainBall.loc);
