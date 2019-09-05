@@ -4,7 +4,7 @@ class Ball{
   constructor(x,y,dx,dy,id){
     this.loc= createVector(x,y);
     this.vel = createVector(dx,dy);
-    this.clr = color(random(255),random(255),random(255));
+    //this.clr = color(random(255),random(255),random(255));
     this.acc=createVector(0,0);
     this.id=id;
     if (this.id<0){
@@ -22,40 +22,59 @@ class Ball{
     this.update();
   }
   checkEdges(){
-    if(this.loc.x<0){
-      this.vel.x = -this.vel.x;
+    if(this.id>=0){
+      if(this.loc.x<0){
+        this.vel.x = -this.vel.x;
+      }
+      if(this.loc.x>width){
+        this.vel.x = -this.vel.x;
+      }
+      if(this.loc.y<0){
+        this.vel.y = -this.vel.y;
+      }
+      if(this.loc.y>height){
+        this.vel.y = -this.vel.y;
     }
-    if(this.loc.x>width){
-      this.vel.x = -this.vel.x;
+  }
+  if(this.id<0){
+    if(this.loc.x>800){
+      this.loc.x=0
+    }
+    if(this.loc.x<0){
+      this.loc.x=800
+    }
+    if(this.loc.y>800){
+      this.loc.y=0
     }
     if(this.loc.y<0){
-      this.vel.y = -this.vel.y;
+      this.loc.y=800
     }
-    if(this.loc.y>height){
-      this.vel.y = -this.vel.y;
-    }
+  }
   }
 
   update(){
     var distToMainBall
     if(this.id >= 0){
       distToMainBall = this.loc.dist(mainBall.loc);
-      if (distToMainBall<250){
-        this.acc=p5.Vector.sub(mainBall.loc,this.loc);
+      if (distToMainBall<500){
+        //attraction
+        this.acc= p5.Vector.sub(mainBall.loc,this.loc);
         this.acc.normalize();
-        this.acc.mult(.07);
+        this.acc.mult(.5);
       }
-      if(distToMainBall<150){
+      if(distToMainBall<200){
+        //repulsion
         this.acc=p5.Vector.sub(this.loc,mainBall.loc);
         this.acc.normalize();
         this.acc.mult(0.5);
       }
     }
-    this.vel.limit(10);
+    this.vel.limit(5);
     this.loc.add(this.vel);
     this.vel.add(this.acc);
   }
   render(){
+      this.clr = color(random(255),random(255),random(255));
       fill(this.clr);
       ellipse(this.loc.x, this.loc.y, this.w, this.w);
     }
