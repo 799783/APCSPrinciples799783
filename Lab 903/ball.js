@@ -53,18 +53,20 @@ class Ball{
   }
 
   update(){
-    var distToMainBall
+    var distToMainBallatt
+    var distToMainBallrep
     if(this.id >= 0){
-      distToMainBall = this.loc.dist(mainBall.loc);
-      if (distToMainBall<500){
+      distToMainBallatt = this.loc.dist(mainBallatt.loc);
+      distToMainBallrep = this.loc.dist(mainBallrep.loc);
+      if (distToMainBallatt<500){
         //attraction
-        this.acc= p5.Vector.sub(mainBall.loc,this.loc);
+        this.acc= p5.Vector.sub(mainBallatt.loc,this.loc);
         this.acc.normalize();
         this.acc.mult(.5);
       }
-      if(distToMainBall<200){
+      if(distToMainBallrep<200){
         //repulsion
-        this.acc=p5.Vector.sub(this.loc,mainBall.loc);
+        this.acc=p5.Vector.sub(this.loc,mainBallrep.loc);
         this.acc.normalize();
         this.acc.mult(0.5);
       }
