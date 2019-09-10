@@ -3,6 +3,7 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 var balls= []
+var ships=[]
 var attractor, repeller;
 function setup() {
   // put setup code here
@@ -20,8 +21,8 @@ function draw() {
 function loadObjects(n){
   attractor= new Ball(width/2,height/2,random(-1,1),random(-1,1),-1);
   repeller=new Ball(width/2,height/2,random(-1,1),random(-1,1),-2);
-    for(var i=0; i<n, i++){
-      ships[i] = new Ship(random(width), random(height), random(-2,2), random(-2,2), i);
+    for(var i=0; i<n; i++){
+      ships[i] = new Ship(random(width), random(height), random(-2,2), random(-2,2));
     }
 }
 

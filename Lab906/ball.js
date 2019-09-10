@@ -7,12 +7,7 @@ class Ball{
     this.clr = color(random(255),random(255),random(255));
     this.acc=createVector(0,0);
     this.id=id;
-    if (this.id<0){
-      this.w=50;
-    }
-    else{
-      this.w=15
-    }
+    this.w=50;
 
   }
 
@@ -22,34 +17,31 @@ class Ball{
     this.update();
   }
   checkEdges(){
-    if(this.id>=0){
-      if(this.loc.x<0){
-        this.vel.x = -this.vel.x;
-      }
-      if(this.loc.x>width){
-        this.vel.x = -this.vel.x;
-      }
-      if(this.loc.y<0){
-        this.vel.y = -this.vel.y;
-      }
-      if(this.loc.y>height){
-        this.vel.y = -this.vel.y;
-    }
-  }
-  if(this.id<0){
+    //  if(this.loc.x<0){
+  //      this.vel.x = -this.vel.x;
+//      }
+  //    if(this.loc.x>width){
+  //      this.vel.x = -this.vel.x;
+  //    }
+  //    if(this.loc.y<0){
+  //      this.vel.y = -this.vel.y;
+  //    }
+  //    if(this.loc.y>height){
+  //      this.vel.y = -this.vel.y;
+  //  }
     if(this.loc.x>800){
-      this.loc.x=0
+      this.loc.x=0;
     }
     if(this.loc.x<0){
-      this.loc.x=800
+      this.loc.x=800;
     }
     if(this.loc.y>800){
-      this.loc.y=0
+      this.loc.y=0;
     }
     if(this.loc.y<0){
-      this.loc.y=800
+      this.loc.y=800;
     }
-  }
+
   }
 
   update(){
