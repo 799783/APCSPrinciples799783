@@ -5,6 +5,7 @@ class Ship{
     this.loc= createVector(x,y);
     this.vel = createVector(dx,dy);
     this.angle= 0;
+    this.acc=createVector(0,0);
     this.clr=color(random(255),random(255),random(255));
 
   }
@@ -22,16 +23,35 @@ class Ship{
   }
 
   update(){
+    var distattractor;
+    var distrepeller;
+    distattractor=this.loc.dist(attractor.loc);
+    distrepeller=this.loc.dist(repeller.loc);
+    if(distattractor<500){
+      //attraction
+      this.acc=p5.Vector.sub(attractor.loc,this.loc)
+      this.acc.normalize();
+      this.acc.mult(.5);
+    }
+
+    if(distrepeller<200){
+      //replusion
+      this.acc=p5.Vector.sub(this.loc,attractor.loc)
+      this.acc.normalize();
+      this.acc.mult(.5);
+      this.angle=repeller.loc.heading();
+    }
+
     this.vel.add(this.acc);
     this.vel.limit(2);
     this.loc.add(this.vel);
   }
   render(){
       fill(this.clr);
-      this.angle=this.loc.heading();
+      triangle(-5,8,5,8,0,-8);
       push();
         translate(this.loc.x,this.loc.y);
-        rotate(this.angle);
+        rotate(this.loc.heading());
         triangle(-5,8,5,8,0,-8);
       pop();
     }
