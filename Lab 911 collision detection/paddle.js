@@ -22,6 +22,8 @@ checkEdges(){
 
 }
 update(){
-
+  var MouseLoc=createVector(mouseX,775);
+  this.loc=p5.Vector.lerp(this.loc,MouseLoc,.9);
 }
+
 }
