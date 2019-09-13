@@ -5,9 +5,9 @@
 class Paddle{
   constructor(x,y,w,h){
     this.loc=createVector(x,y);
-    this.w= 100;
-    this.h=25;
-    this.clr= color(random(255),random(255),random(255));
+    this.w=w;
+    this.h=h;
+    this.clr= color(255,0,0);
   }
 run(){
   this.render();
@@ -22,7 +22,7 @@ checkEdges(){
 
 }
 update(){
-  var MouseLoc=createVector(mouseX,775);
+  var MouseLoc=createVector(mouseX,790);
   this.loc=p5.Vector.lerp(this.loc,MouseLoc,.9);
 }
 

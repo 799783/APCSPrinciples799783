@@ -13,14 +13,14 @@ function setup() {
 }
 
 function draw() {
-  background(5,5,5,50);
+  background(20,20,20);
   runBalls();
 }
 
 function loadObjects(n){
-    paddle= new Paddle(350,775,100,25);
+    paddle= new Paddle(350,775,150,10);
     for(var i=0; i<n; i++){
-      balls[i]= new Ball(400, 400,random(-8,8),random(-8,8));
+      balls[i]= new Ball(400, 400,random(-8,8),random(0,8));
     }
 }
 
