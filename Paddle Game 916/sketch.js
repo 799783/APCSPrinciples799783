@@ -4,14 +4,16 @@
 //  The setup function function is called once when your program begins
 var balls= []
 var paddle;
-var scoreup,scoredown;
+let score;
 function setup() {
   // put setup code here
+  score= createDiv('Score = 0');
+  score.position(20,20);
+  score.id='score';
+  score.style('color','black');
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
-  scoreup=0;
-  scoredown=0;
   loadObjects(1);
 }
 

@@ -32,7 +32,7 @@ class Ball{
 
   update(){
     this.loc.add(this.vel);
-    this.vel.limit(100)
+    this.vel.limit(25)
     this.vel.add(this.acc);
   }
   render(){
@@ -43,18 +43,15 @@ class Ball{
     if(this.loc.x>paddle.loc.x&&
         this.loc.x<paddle.loc.x+paddle.w&&
         this.loc.y+(this.w/2)>paddle.loc.y&&
-        this.loc.y+(this.w/2)<paddle.loc.y+paddle.h){
+        this.loc.y+(this.w/2)<paddle.loc.y+25){
           this.vel.y=-this.vel.y;
-          this.vel.x=this.vel.x;
-          scoreup=scoreup+1;
-          console.log(scoreup);
+          score=score+1;
         }
     if(this.loc.x>paddle.loc.x&&
         this.loc.x<paddle.loc.x+paddle.w&&
-        this.loc.y-(this.w/2)===paddle.loc.y+paddle.h){
+        this.loc.y-(this.w/2)<paddle.loc.y+paddle.h&&
+        this.loc.y-(this.w/2)>paddle.loc.y+(paddle.h-25)){
           this.vel.y=-this.vel.y;
-          scoredown=scoredown+1;
-          console.log(scoredown);
         }
         }
 

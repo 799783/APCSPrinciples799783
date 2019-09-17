@@ -13,6 +13,7 @@ run(){
   this.render();
   this.checkEdges();
   this.update();
+
 }
 render(){
   fill(this.clr);
