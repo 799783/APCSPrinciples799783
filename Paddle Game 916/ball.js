@@ -1,11 +1,12 @@
 //Joe Untrecht
 class Ball{
-  constructor(x,y,dx,dy,w){
+  constructor(x,y,dx,dy,w,id){
     this.loc= createVector(x,y);
     this.vel = createVector(dx,dy);
     this.clr = color(random(255),random(255),random(255));
     this.acc=createVector(0,0.5);
     this.w=20;
+    this.id=id;
 
   }
   run(){
@@ -37,7 +38,7 @@ class Ball{
   }
   render(){
       fill(this.clr);
-      ellipse(this.loc.x, this.loc.y, this.w, this.w);
+      ellipse(this.loc.x, this.loc.y, this.w, this.w, this.id);
     }
   isColliding(){
     if(this.loc.x>paddle.loc.x&&
