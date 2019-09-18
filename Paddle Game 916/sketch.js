@@ -4,15 +4,13 @@
 //  The setup function function is called once when your program begins
 var balls= []
 var paddle;
-var score;
+var score=0;
 var gameState=1;
 var gameMode;
+var health=10;
+var win;
 function setup() {
   // put setup code here
-  score= createDiv('Score = 0');
-  score.position(20,20);
-  score.id='score';
-  score.style('color','black');
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
@@ -53,6 +51,15 @@ function startGame(){
   //moves to next screen
   if(gameMode==='easy'||gameMode==='medium'||gameMode==='hard'){
     clear();
+    if(gameMode==='easy'){
+      loadObjects(20);
+    }
+    if(gameMode==='medium'){
+      loadObjects(50);
+    }
+    if(gameMode==='hard'){
+      loadObjects(100);
+    }
     gameState=2;
   }
 }
@@ -85,12 +92,36 @@ function isTouching(){
 
 }
 function playGame(){
-  loadObjects(1);
+  background(20,20,20);
+  textSize(25);
+  fill(255,0,0);
+  text('Score:',20,20);
   runBalls();
+  if(health<=0){
+    clear();
+    gameState=3;
+    win='no';
+  }
+  if(balls.length===0){
+    clear();
+    gameState=3;
+    win='yes';
+  }
 }
 
 function endGame(){
-
+  background(20,20,20);
+  console.log(win);
+  if(win==='no'){
+    textSize(100);
+    fill(255,0,0);
+    text("You Lose!",200,400);
+  }
+  if(win==='yes'){
+    textSize(100);
+    fill(255,0,0);
+    text("You Win!",200,400);
+  }
 }
 function loadObjects(n){
     paddle= new Paddle(350,500,150,50);
