@@ -25,7 +25,7 @@ function draw() {
     startGame();
   }else if(gameState===2){
     playGame();
-  }else if(gameState==3){
+  }else if(gameState===3){
     endGame();
   }
 
@@ -52,6 +52,7 @@ function startGame(){
   isTouching();
   //moves to next screen
   if(gameMode==='easy'||gameMode==='medium'||gameMode==='hard'){
+    clear();
     gameState=2;
   }
 }
