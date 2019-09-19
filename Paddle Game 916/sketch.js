@@ -95,7 +95,8 @@ function playGame(){
   background(20,20,20);
   textSize(25);
   fill(255,0,0);
-  text('Score:',20,20);
+  text('Score:'+score,20,20);
+  text('Health:'+health,650,20);
   runBalls();
   if(health<=0){
     clear();
