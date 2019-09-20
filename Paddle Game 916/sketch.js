@@ -9,6 +9,7 @@ var gameState=1;
 var gameMode;
 var health=10;
 var win;
+var iteration=1;
 function setup() {
   // put setup code here
   var cnv = createCanvas(800, 800);
@@ -46,19 +47,27 @@ function startGame(){
   fill(255,0,0);
   rect(600,600,50,50);
   text('Hard',575,700);
+  textSize(15);
+  fill(255,255,255);
+  text('Press easy, medium, or hard. Balls will then appear,',250,400);
+  text('and you must move the paddle with your mouse to hit the balls.',250,425);
+  text('Only move your paddle to hit the ball from the top of the paddle',250,450);
+  text('If the balla hits the top of the paddle, the score will go up by 1',250,475);
+  text('If the balls hits the bottom of the paddle, your health will drop', 250,500);
+  text('When your health hits 0, you lose. If you survive, you win.',250,525);
   //checks if user touches the box
   isTouching();
   //moves to next screen
   if(gameMode==='easy'||gameMode==='medium'||gameMode==='hard'){
     clear();
     if(gameMode==='easy'){
-      loadObjects(20);
+      loadObjects(5);
     }
     if(gameMode==='medium'){
-      loadObjects(50);
+      loadObjects(10);
     }
     if(gameMode==='hard'){
-      loadObjects(100);
+      loadObjects(25);
     }
     gameState=2;
   }
@@ -103,7 +112,7 @@ function playGame(){
     gameState=3;
     win='no';
   }
-  if(balls.length===0){
+  if(iteration===4){
     clear();
     gameState=3;
     win='yes';

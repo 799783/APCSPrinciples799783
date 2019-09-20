@@ -49,12 +49,25 @@ class Ball{
     this.loc.add(this.vel);
     this.vel.limit(25)
     this.vel.add(this.acc);
+    if(balls.length<=0&& iteration<=3&& health>0){
+      if(gameMode==='easy'){
+        loadObjects(5);
+      }
+      if(gameMode==='medium'){
+        loadObjects(10);
+      }
+      if(gameMode==='hard'){
+        loadObjects(25);
+      }
+      runBalls();
+      iteration=iteration+1;
+    }
   }
   render(){
       fill(this.clr);
       ellipse(this.loc.x, this.loc.y, this.w, this.w,this.id);
     }
-    
+
   isColliding(){
     if(this.loc.x>paddle.loc.x&&
         this.loc.x<paddle.loc.x+paddle.w&&
