@@ -27,8 +27,8 @@ function draw() {
   }else if(gameState===3){
     endGame();
   }
-
 }
+
 function startGame(){
   //title
   textSize(75);
@@ -47,14 +47,14 @@ function startGame(){
   fill(255,0,0);
   rect(600,600,50,50);
   text('Hard',575,700);
-  textSize(15);
+  textSize(25);
   fill(255,255,255);
-  text('Press easy, medium, or hard. Balls will then appear,',250,400);
-  text('and you must move the paddle with your mouse to hit the balls.',250,425);
-  text('Only move your paddle to hit the ball from the top of the paddle',250,450);
-  text('If the balla hits the top of the paddle, the score will go up by 1',250,475);
-  text('If the balls hits the bottom of the paddle, your health will drop', 250,500);
-  text('When your health hits 0, you lose. If you survive, you win.',250,525);
+  text('Press easy, medium, or hard. Balls will then appear,',50,350);
+  text('and you must move the paddle with your mouse to hit the balls.',50,375);
+  text('Only move your paddle to hit the ball from the top of the paddle.',50,400);
+  text('If the balls hits the top of the paddle, the score will go up by 1.',50,425);
+  text('If the balls hits the bottom of the paddle, your health will drop.', 50,450);
+  text('When your health hits 0, you lose. If you survive, you win.',50,475);
   //checks if user touches the box
   isTouching();
   //moves to next screen
@@ -121,7 +121,6 @@ function playGame(){
 
 function endGame(){
   background(20,20,20);
-  console.log(win);
   if(win==='no'){
     textSize(100);
     fill(255,0,0);
@@ -132,6 +131,36 @@ function endGame(){
     fill(255,0,0);
     text("You Win!",200,400);
   }
+  fill(0,255,0);
+  rect(300,600,50,50);
+  textSize(25);
+  text('Play Again?',275,575);
+  fill(255,0,0);
+  rect(500,600,50,50);
+  text('Quit?',500,575);
+  if(mouseIsPressed&&
+      mouseX>300&&
+      mouseX<350&&
+      mouseY>600&&
+      mouseY<650){
+        clear();
+        score=0;
+        gameMode='';
+        iteration=1;
+        balls=[];
+        win='no';
+        health=10;
+        gameState=1;
+      }
+      //if touching quit
+  if(mouseIsPressed&&
+      mouseX>500&&
+      mouseX<550&&
+      mouseY>600&&
+      mouseY<650){
+        remove();
+        clear();
+      }
 }
 function loadObjects(n){
     paddle= new Paddle(350,500,150,50);
