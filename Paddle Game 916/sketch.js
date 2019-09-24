@@ -10,13 +10,39 @@ var gameMode;
 var health=10;
 var win;
 var iteration=1;
+var buttons=[];
+var buttonPosX=200;
 function setup() {
   // put setup code here
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
+  loadButtons();
 }
 
+class Button{
+  constructor(x,y,w,h){
+    this.loc= createVector(x,y);
+    this.w=w;
+    this.h=h;
+    this.clr= color(random(255),random(255),random(255));
+  }
+  run(){
+    this.render();
+    this.checkEdges();
+
+  }
+  render(){
+    fill(this.clr);
+    rect(this.loc.x,this.loc.y,this.w,this.h);
+    text('Easy',175,700);
+    text('Medium',350,700);
+    text('Hard',575,700);
+  }
+  checkEdges(){
+    isTouching();
+  }
+}
 
 function draw() {
   background(20,20,20);
@@ -36,17 +62,18 @@ function startGame(){
   text('Paddle Game',200,200);
   //easy rectangle
   textSize(50);
-  fill(0,255,0);
-  rect(200,600,50,50);
-  text('Easy',175,700);
+  runButtons();
+  //fill(0,255,0);
+  //rect(200,600,50,50);
+//  text('Easy',175,700);
   //medium rectangle
-  fill(0,0,255);
-  rect(400,600,50,50);
-  text('Medium',350,700);
+  //fill(0,0,255);
+  //rect(400,600,50,50);
+  //text('Medium',350,700);
   //hard rectangle
-  fill(255,0,0);
-  rect(600,600,50,50);
-  text('Hard',575,700);
+  //fill(255,0,0);
+  //rect(600,600,50,50);
+//  text('Hard',575,700);
   textSize(25);
   fill(255,255,255);
   text('Press easy, medium, or hard. Balls will then appear,',50,350);
@@ -56,7 +83,7 @@ function startGame(){
   text('If the balls hits the bottom of the paddle, your health will drop.', 50,450);
   text('When your health hits 0, you lose. If you survive, you win.',50,475);
   //checks if user touches the box
-  isTouching();
+  //isTouching();
   //moves to next screen
   if(gameMode==='easy'||gameMode==='medium'||gameMode==='hard'){
     clear();
@@ -75,6 +102,8 @@ function startGame(){
 
 function isTouching(){
   //if touching easy
+  //if(mouseIsPressed&&
+      //mouseX>)
   if(mouseIsPressed&&
       mouseX>200&&
       mouseX<250&&
@@ -161,6 +190,26 @@ function endGame(){
         remove();
         clear();
       }
+}
+
+function loadButtons(){
+  if (gameState===1){
+    for(var i=0;i<3;i++){
+      buttons[i]= new Button(200*(i+1),600,50,50);
+    }
+  }
+  if(gameState===3){
+    buttons=[]
+    for(var i=0; i<2;i++){
+      buttons[i]= new Button(300+(200*i),600, 50, 50);
+    }
+  }
+}
+
+function runButtons(){
+  for (var i=0; i<buttons.length;i++){
+    buttons[i].run();
+  }
 }
 function loadObjects(n){
     paddle= new Paddle(350,500,150,50);

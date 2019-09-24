@@ -37,12 +37,10 @@ class Ball{
         if(this.vel.y>0){
           balls.splice(i,1);
           score=score+1;
-          //console.log(score)
         }
         if(this.vel.y<0){
           balls.splice(i,1);
           health=health-1;
-          //console.log(health)
         }
       }
     }
