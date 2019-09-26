@@ -10,19 +10,18 @@ class Paddle{
     this.clr= color(255,0,0);
   }
 run(){
+  //main function in class
   this.render();
-  this.checkEdges();
   this.update();
 
 }
 render(){
+  //creates paddle
   fill(this.clr);
   rect(this.loc.x,this.loc.y,this.w,this.h);
 }
-checkEdges(){
-
-}
 update(){
+  //follows mouse
   var MouseLoc=createVector(mouseX,500);
   this.loc=p5.Vector.lerp(this.loc,MouseLoc,.9);
 }
