@@ -11,7 +11,7 @@ class Ball{
 
   }
   run(){
-    //mian function within class
+    //main function within class
     this.checkEdges();
     this.render();
     this.isColliding();
