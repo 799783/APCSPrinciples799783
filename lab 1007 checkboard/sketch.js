@@ -6,7 +6,7 @@
 var squares=[];
 
 //put setup code here
-function steup(){
+function setup(){
   var cnv=createCanvas(800,800);
   cnv.position((windowWidth-width)/2,30);
   background(235);
@@ -20,22 +20,23 @@ function steup(){
 function loadSquares(){
   for (var i=0;i<8;i++){
     for(var x=0;x<8;x++){
-      squares[x+8*i]=new Square(100*x,100*i,100,100);
+      if(i%2===0){
+        if(x%2===0){
+          var shade=color(255,0,0);
+        }
+        if(x%2!==0){
+          var shade=color(0,255,0);
+        }
+      }
+      if(i%2!==0){
+        if(x%2!==0){
+          var shade=color(255,0,0);
+        }
+        if(x%2===0){
+          var shade=color(0,255,0);
+        }
+      }
+      squares[x+(8*i)]= new Square(100*x,100*i,100,100, shade);
     }
   }
-}
-
-class Square{
-  constructor(x,y,w,h,c){
-    this.loc=createVector(x,y);
-    this.w=w;
-    this.h=h;
-    this.clr=c;
-  }
-
-render(){
-  //creates square
-  fill(this.clr);
-  rect(this.loc.x,this.loc.y,this.w,this.h);
-}
 }
