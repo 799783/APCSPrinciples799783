@@ -1,7 +1,8 @@
 //  Joe Untrecht
-// 	8/28 Vector
+// 	1009
 //  This is a comment
 //  The setup function function is called once when your program begins
+//bubble sort
 var list = [4,6,1,8,2,9];
 function swap(list,a,b){
   var temp=list[a];
@@ -16,5 +17,13 @@ for(var i=0; i<list.length; i++){
   }
 }
 console.log(list);
-
-for(var i=0; i,list.length; i++)
+//not bubble sort
+var list = [4,6,1,8,2,9];
+for(var i=0; i<list.length; i++){
+  for (var x=0; x<list.length; x++){
+    if(list[i]>list[i+x]){
+      swap(list,i,i+x);
+    }
+  }
+}
+console.log(list);
