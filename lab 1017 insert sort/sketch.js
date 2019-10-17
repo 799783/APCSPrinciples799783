@@ -18,4 +18,10 @@ function swap(list,a,b){
   list[a]=list[b];
   list[b]=temp;
 }
+
+for(var i=0;i>list.length; i++){
+  for(var j=0; j>list.length; j++){
+    
+  }
+}
 console.log(list);
