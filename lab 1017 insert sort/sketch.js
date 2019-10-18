@@ -18,10 +18,17 @@ function swap(list,a,b){
   list[a]=list[b];
   list[b]=temp;
 }
-
-for(var i=0;i>list.length; i++){
-  for(var j=0; j>list.length; j++){
-    
+function insertionsort(){
+  for(var i=1; i<list.length; i++){
+    for(var j=i; j>0; j--){
+      if(list[j] < list[j-1]){
+        swap(list,j,j-1);
+      }
+    }
   }
+  console.log(list);
 }
-console.log(list);
+
+function draw(){
+  insertionsort();
+}
