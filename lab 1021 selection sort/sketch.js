@@ -13,7 +13,7 @@ function setup(){
   for (var i=0; i<10; i++){
     list[i]= int(random(10));
   }
-  insertionsort();
+  selectionsort();
   }
 
 function swap(list,a,b){
@@ -21,15 +21,17 @@ function swap(list,a,b){
   list[a]=list[b];
   list[b]=temp;
 }
-function insertionsort(){
-  for(var i=1; i<list.length; i++){
-    for(var j=i; j>0; j--){
-      checks=checks+1;
-      if(list[j] < list[j-1]){
-        swap(list,j,j-1);
-        swaps=swaps+1
+function selectionsort(){
+  for(var i=0; i<list.length-1; i++){
+    var index=i;
+    for(var j=i+1; j<list.length; j++){
+      checks=checks+1
+      if(list[j] < list[index]){
+        index=j;
       }
     }
+    swap(list,index,i);
+    swaps=swaps+1
   }
   console.log(list);
   console.log(checks);
