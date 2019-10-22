@@ -22,6 +22,7 @@ function swap(list,a,b){
   list[b]=temp;
 }
 function insertionsort(){
+  var t1= millis();
   for(var i=1; i<list.length; i++){
     for(var j=i; j>0; j--){
       checks=checks+1;
@@ -31,7 +32,10 @@ function insertionsort(){
       }
     }
   }
+  var t2=mills();
+  seconds=((t2-t1)/1000);
   console.log(list);
   console.log(checks);
   console.log(swaps);
+  console.log(seconds);
 }
