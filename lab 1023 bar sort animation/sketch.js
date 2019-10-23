@@ -12,14 +12,17 @@ function setup(){
   background(235);
   loadBars();
   //traverse array
+}
+
+function draw(){
   for(var i=0; i<bars.length; i++){
-    bars[i].render();
+    bars[i].run();
   }
 }
 
 function loadBars(){
-  for (var i=0; i<30; i++){
-    var j=int(random(i,30));
-    bars[i]= new Bar(25*i,800-(25*i),25,(25*i))
+  for (var i=0; i<32; i++){
+    var w=int(random(1,32));
+    bars[i]= new Bar(25*i,800-(25*w),25,(25*w))
   }
 }
