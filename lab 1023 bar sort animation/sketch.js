@@ -18,8 +18,9 @@ function setup(){
 }
 
 function draw(){
-bubblesort()
+bubblesort();
 }
+
 function move(){
   for(var i=0; i<bars.length; i++){
     bars[i].set(i);
@@ -30,7 +31,7 @@ function move(){
   }
 }
 function bubblesort(){
-  for (var i=bars.length-1;i>0; i--){
+for (var i=bars.length-1;i>0; i--){
     for (var j=0; j<i; j++){
       if(bars[j].h>bars[j+1].h){
         swap(bars, j, j+1);
@@ -39,6 +40,7 @@ function bubblesort(){
     }
   }
 }
+
 
 
 
@@ -53,10 +55,4 @@ function swap(list,a,b){
   var temp=list[a];
   list[a]=list[b];
   list[b]=temp;
-}
-function sleep(miliseconds) {
-   var currentTime = new Date().getTime();
-
-   while (currentTime + miliseconds >= new Date().getTime()) {
-   }
 }
