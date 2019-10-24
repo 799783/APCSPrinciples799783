@@ -21,8 +21,8 @@ function draw(){
 }
 
 function loadBars(){
-  for (var i=0; i<32; i++){
+  for (var x=0; x<32; x++){
     var w=int(random(1,32));
-    bars[i]= new Bar(25*i,800-(25*w),25,(25*w))
+    bars[x]= new Bar(25*x,800-(25*w),25,(25*w))
   }
 }
