@@ -11,7 +11,7 @@ function setup(){
   cnv.position((windowWidth-width)/2,30);
   background(235);
   loadBars();
-  frameRate(1);
+  frameRate(10);
   for(var i=0; i<bars.length; i++){
     bars[i].run();
   }
@@ -30,17 +30,15 @@ function move(){
     bars[i].run();
   }
 }
+
 function bubblesort(){
-for (var i=bars.length-1;i>0; i--){
-    for (var j=0; j<i; j++){
+    for (var j=0; j<bars.length-1; j++){
       if(bars[j].h>bars[j+1].h){
         swap(bars, j, j+1);
         move();
       }
     }
   }
-}
-
 
 
 
