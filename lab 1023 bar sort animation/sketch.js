@@ -9,7 +9,7 @@ var bars=[];
 function setup(){
   var cnv=createCanvas(800,800);
   cnv.position((windowWidth-width)/2,30);
-  background(235);
+  background(20,100,250);
   loadBars();
   frameRate(10);
   for(var i=0; i<bars.length; i++){
@@ -25,7 +25,7 @@ function move(){
   for(var i=0; i<bars.length; i++){
     bars[i].set(i);
   }
-  background(235);
+  background(20,100,250);
   for(var i=0; i<bars.length; i++){
     bars[i].run();
   }
@@ -45,7 +45,7 @@ function bubblesort(){
 function loadBars(){
   for (var x=0; x<32; x++){
     var w=int(random(1,32));
-    bars[x]= new Bar(25*x,800-(25*w),25,(25*w))
+    bars[x]= new Bar(25*x,800-(25*w),25,(25*w), color(200, 200, 0))
   }
 }
 

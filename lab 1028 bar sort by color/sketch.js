@@ -5,6 +5,7 @@
 //global
 var bars=[];
 var buttons=[];
+var colorToSort;
 //put setup code here
 function setup(){
   var cnv=createCanvas(800,800);
@@ -12,11 +13,14 @@ function setup(){
   background(235);
   loadButtons();
   loadBars();
-  for(var i=0; i<buttons.length; i++){
-    buttons[i].run();
-  }
   for(var i=0; i<bars.length; i++){
     bars[i].run();
+  }
+}
+
+function runButtons(){
+  for(var i=0; i<buttons.length; i++){
+    buttons[i].run();
   }
 }
 
@@ -26,8 +30,36 @@ function loadButtons(){
   buttons[2]=new Button(600,100,50,50,2);
 }
 
+function isTouching(){
+  if (mouseIsTouching&&
+      mouseX>200&&
+      mouseX<250&&
+      mouseY>100&&
+      mouseY<150){
+        colorToSort='red';
+      }
+  if (mouseIsTouching&&
+      mouseX>200&&
+      mouseX<250&&
+      mouseY>100&&
+      mouseY<150){
+        colorToSort='green';
+      }
+    if (mouseIsTouching&&
+      mouseX>200&&
+      mouseX<250&&
+      mouseY>100&&
+      mouseY<150){
+        colorToSort='blue';
+      }
+}
+
 function draw(){
-bubblesort();
+  runButtons();
+  isTouching();
+if(colorToSort==='red'||colorToSort==='green'||colorToSort==='blue'){
+  bubblesort();
+}
 }
 
 function move(){
@@ -41,12 +73,30 @@ function move(){
 }
 
 function bubblesort(){
+  if (colorToSort==='red'){
     for (var j=0; j<bars.length-1; j++){
-      if(bars[j].colorAv>bars[j+1].colorAv){
+      if(bars[j].a<bars[j+1].a){
         swap(bars, j, j+1);
         move();
       }
     }
+  }
+  if (colorToSort==='green'){
+    for (var j=0; j<bars.length-1; j++){
+      if(bars[j].b<bars[j+1].b){
+        swap(bars, j, j+1);
+        move();
+      }
+    }
+  }
+  if (colorToSort==='blue'){
+    for (var j=0; j<bars.length-1; j++){
+      if(bars[j].c<bars[j+1].c){
+        swap(bars, j, j+1);
+        move();
+      }
+    }
+  }
   }
 
 

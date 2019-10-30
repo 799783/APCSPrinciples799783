@@ -4,6 +4,7 @@ class Bar{
     this.loc=createVector(x,y);
     this.w=w;
     this.h=h;
+    this.clr = c;
   }
 run(){
   //main function in class
@@ -11,7 +12,7 @@ run(){
 
 }
 render(){
-  fill(0,255,255);
+  fill(this.clr);
   rect(this.loc.x,this.loc.y,this.w,this.h);
 }
 set(i){
