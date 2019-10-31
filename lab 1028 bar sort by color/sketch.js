@@ -31,23 +31,23 @@ function loadButtons(){
 }
 
 function isTouching(){
-  if (mouseIsTouching&&
+  if (mouseIsPressed&&
       mouseX>200&&
       mouseX<250&&
       mouseY>100&&
       mouseY<150){
         colorToSort='red';
       }
-  if (mouseIsTouching&&
-      mouseX>200&&
-      mouseX<250&&
+  if (mouseIsPressed&&
+      mouseX>400&&
+      mouseX<450&&
       mouseY>100&&
       mouseY<150){
         colorToSort='green';
       }
-    if (mouseIsTouching&&
-      mouseX>200&&
-      mouseX<250&&
+    if (mouseIsPressed&&
+      mouseX>600&&
+      mouseX<650&&
       mouseY>100&&
       mouseY<150){
         colorToSort='blue';
