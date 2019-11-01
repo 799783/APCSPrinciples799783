@@ -59,7 +59,7 @@ class Ball{
     }
     //movement
     this.loc.add(this.vel);
-    this.vel.limit(25)
+    this.vel.limit(25);
     this.vel.add(this.acc);
     //if no more balls, but has not had 3 iterations, and still alive
     if(balls.length<=0&& iteration<=3&& health>0){

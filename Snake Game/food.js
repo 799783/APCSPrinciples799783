@@ -3,13 +3,12 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 
-class Snake{
-  constructor(x,y,w,h,c,id){
+class Food{
+  constructor(x,y,w,id){
     this.loc=createVector(x,y);
     this.w=w;
-    this.h=h;
-    this.clr=c;
-    this.body=id;
+    this.clr=color(0,255,0);
+    this.id=id;
   }
 
   run(){
@@ -18,7 +17,8 @@ class Snake{
   }
 
   render(){
-    
+    fill(this.clr);
+    rect(this.loc.x,this.loc.y,this.w,this.w);
   }
 
   update(){
