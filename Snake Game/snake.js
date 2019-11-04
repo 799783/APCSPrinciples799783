@@ -2,7 +2,6 @@
 // 	9/16 Paddle Game
 //  This is a comment
 //  The setup function function is called once when your program begins
-
 class Snake{
   constructor(x,y,dx,dy,w,id){
     this.loc=createVector(x,y);
@@ -18,7 +17,7 @@ class Snake{
     this.render();
     this.checkEdges();
     this.update();
-
+    this.hitFood();
   }
 
   render(){
@@ -70,4 +69,22 @@ checkEdges(){
     this.loc.add(this.vel);
   }
 
+    hitFood(){
+  for (var i=0; i<food.length;i++){
+    if(this.loc.x>food[i].loc.x&&
+        this.loc.x<food[i].loc.x+food[i].w&&
+        this.loc.y>food[i].loc.y&&
+        this.loc.y<food[i].loc.y+food[i].w){
+          food.splice(i,1);
+          hitFood='yes';
+        }
+      else if(this.loc.x+this.w>food[i].loc.x&&
+        this.loc.x+this.w<food[i].loc.x+food[i].w&&
+        this.loc.y+this.w>food[i].loc.y&&
+        this.loc.y+this.w<food[i].loc.y+food[i].w){
+          food.splice(i,1);
+          hitFood='yes';
+        }
+  }
+    }
 }

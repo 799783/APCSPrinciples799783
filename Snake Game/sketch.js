@@ -3,6 +3,7 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 segments=[];
+hitFood='no';
 food=[];
 score=0;
 w=25;
@@ -20,7 +21,6 @@ function setup() {
 function draw() {
   runSnake();
   runFood();
-
 if (endGame==='yes'){
   remove();
   clear();
@@ -43,5 +43,9 @@ function runFood(){
 function runSnake(){
   for (var i=0; i<segments.length; i++){
     segments[i].run();
+    if (hitFood==='yes'){
+      segments[i+1]= new Snake(segments[i].loc.x-segments[i].w,segments[i].loc.y,50,50,i+1);
+      hitFood='no';
+    }
   }
 }
