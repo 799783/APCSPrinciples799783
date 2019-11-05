@@ -3,13 +3,11 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 segments=[];
-head=1;
 hitFood='no';
 numberFood=0;
 food=[];
 score=0;
 w=25;
-headerHeight=32;
 function setup() {
   // put setup code here
   var cnv = createCanvas(800, 800);
@@ -26,6 +24,10 @@ function draw() {
 if(hitFood==='yes'){
   numberFood=numberFood+1;
   addSegments();
+  hitFood='no'
+  console.log(numberFood);
+  console.log(segments);
+  console.log(segments[numberFood-1]);
 }
 //if (endGame==='yes'){
   //remove();
@@ -34,7 +36,7 @@ if(hitFood==='yes'){
 }
 
 function loadHead(){
-  head=new Snake(0,0,25,25,0);
+  segments[0]=new Snake(0,0,0,0,25,color(255,0,0),0);
 }
 
 function loadFood(){
@@ -48,12 +50,23 @@ function runFood(){
 }
 
 function runSnake(){
-  head.run();
+  background(20,20,20);
   for (var i=0; i<segments.length; i++){
     segments[i].run();
   }
 }
 
 function addSegments(){
-  segments[numberFood-1]= new Snake(head.loc.x-head.w,head.loc.y,25,25,numberFood-1)
+  if(segments[numberFood-1].vel.x===3){
+    segments[numberFood]= new Snake(segments[numberFood-1].loc.x-segments[numberFood-1].w,segments[numberFood-1].loc.y,3,0,25,color(255,0,0),numberFood);
+  }
+  if(segments[numberFood-1].vel.x===-3){
+    segments[numberFood]= new Snake(segments[numberFood-1].loc.x+segments[numberFood-1].w,segments[numberFood-1].loc.y,-3,0,25,color(255,0,0),numberFood);
+  }
+  if(segments[numberFood-1].vel.y===3){
+    segments[numberFood]= new Snake(segments[numberFood-1].loc.x,segments[numberFood-1].loc.y-segments[numberFood-1].w,0,3,25,color(255,0,0),numberFood);
+  }
+  if(segments[numberFood-1].vel.y===-3){
+    segments[numberFood]= new Snake(segments[numberFood-1].loc.x,segments[numberFood-1].loc.y+segments[numberFood-1].w,0,-3,25,color(255,0,0),numberFood);
+  }
 }
