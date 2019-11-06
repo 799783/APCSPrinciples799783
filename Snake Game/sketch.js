@@ -8,6 +8,8 @@ numberFood=0;
 food=[];
 score=0;
 w=25;
+xTurnLocation=-1;
+yTurnLocation=-1;
 function setup() {
   // put setup code here
   var cnv = createCanvas(800, 800);
@@ -25,9 +27,6 @@ if(hitFood==='yes'){
   numberFood=numberFood+1;
   addSegments();
   hitFood='no'
-  console.log(numberFood);
-  console.log(segments);
-  console.log(segments[numberFood-1]);
 }
 //if (endGame==='yes'){
   //remove();
@@ -53,6 +52,10 @@ function runSnake(){
   background(20,20,20);
   for (var i=0; i<segments.length; i++){
     segments[i].run();
+  }
+  if(keyIsPressed){
+    xTurnLocation=segments[0].loc.x;
+    yTurnLocation=segments[0].loc.y;
   }
 }
 

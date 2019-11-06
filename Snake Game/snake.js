@@ -2,7 +2,6 @@
 // 	9/16 Paddle Game
 //  This is a comment
 //  The setup function function is called once when your program begins
-turnLocation=0;
 class Snake{
   constructor(x,y,dx,dy,w,c,id){
     this.loc=createVector(x,y);
@@ -44,38 +43,40 @@ checkEdges(){
 }
 
   update(){
-    if(keyIsPressed&&
-      keyCode=== RIGHT_ARROW){
-        turnLocation=segments[0].loc.x;
-        if(this.loc.x===turnLocation){
-          this.vel.x=3;
-          this.vel.y=0;
+    if(keyIsPressed){
+      if (keyCode===RIGHT_ARROW){
+        for(var i=0; i<segments.length;i++){
+          if(segments[i].loc.y===yTurnLocation){
+            segments[i].vel.x=3;
+            segments[i].vel.y=0;
+          }
         }
       }
-    if(keyIsPressed&&
-      keyCode=== LEFT_ARROW){
-        turnLocation=segments[0].loc.x;
-        if(this.loc.x===turnLocation){
-          this.vel.x=-3;
-          this.vel.y=0;
-        }
-        }
-    if(keyIsPressed&&
-      keyCode=== UP_ARROW){
-        turnLocation=segments[0].loc.x;
-        if(this.loc.x===turnLocation){
-          this.vel.x=0;
-          this.vel.y=-3;
+      if (keyCode===LEFT_ARROW){
+        for(var i=0; i<segments.length;i++){
+          if(segments[i].loc.y===yTurnLocation){
+            segments[i].vel.x=-3;
+            segments[i].vel.y=0;
+          }
         }
       }
-    if(keyIsPressed&&
-      keyCode=== DOWN_ARROW){
-        turnLocation=segments[0].loc.x;
-        if(this.loc.x===turnLocation){
-          this.vel.x=0;
-          this.vel.y=3;
+      if (keyCode===UP_ARROW){
+        for(var i=0; i<segments.length;i++){
+          if(segments[i].loc.x===xTurnLocation){
+            segments[i].vel.x=0;
+            segments[i].vel.y=-3;
+          }
         }
+      }
+      if (keyCode===DOWN_ARROW){
+        for(var i=0; i<segments.length;i++){
+          if(segments[i].loc.x===xTurnLocation){
+            segments[i].vel.x=0;
+            segments[i].vel.y=3;
+          }
         }
+      }
+    }
     this.loc.add(this.vel);
   }
 
