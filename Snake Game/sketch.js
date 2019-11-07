@@ -7,9 +7,6 @@ hitFood='no';
 numberFood=0;
 food=[];
 score=0;
-w=25;
-xTurnLocation=-1;
-yTurnLocation=-1;
 function setup() {
   // put setup code here
   var cnv = createCanvas(800, 800);
@@ -25,7 +22,6 @@ function draw() {
   runFood();
 if(hitFood==='yes'){
   numberFood=numberFood+1;
-  addSegments();
   hitFood='no'
 }
 //if (endGame==='yes'){
@@ -35,7 +31,7 @@ if(hitFood==='yes'){
 }
 
 function loadHead(){
-  segments[0]=new Snake(0,0,0,0,25,color(255,0,0),0);
+  head=new Snake(0,0,0,0,25,color(255,0,0));
 }
 
 function loadFood(){
@@ -53,23 +49,19 @@ function runSnake(){
   for (var i=0; i<segments.length; i++){
     segments[i].run();
   }
-  if(keyIsPressed){
-    xTurnLocation=segments[0].loc.x;
-    yTurnLocation=segments[0].loc.y;
-  }
 }
 
-function addSegments(){
-  if(segments[numberFood-1].vel.x===3){
-    segments[numberFood]= new Snake(segments[numberFood-1].loc.x-segments[numberFood-1].w,segments[numberFood-1].loc.y,3,0,25,color(255,0,0),numberFood);
-  }
-  if(segments[numberFood-1].vel.x===-3){
-    segments[numberFood]= new Snake(segments[numberFood-1].loc.x+segments[numberFood-1].w,segments[numberFood-1].loc.y,-3,0,25,color(255,0,0),numberFood);
-  }
-  if(segments[numberFood-1].vel.y===3){
-    segments[numberFood]= new Snake(segments[numberFood-1].loc.x,segments[numberFood-1].loc.y-segments[numberFood-1].w,0,3,25,color(255,0,0),numberFood);
-  }
-  if(segments[numberFood-1].vel.y===-3){
-    segments[numberFood]= new Snake(segments[numberFood-1].loc.x,segments[numberFood-1].loc.y+segments[numberFood-1].w,0,-3,25,color(255,0,0),numberFood);
-  }
-}
+//function addSegments(){
+  //if(segments[numberFood-1].vel.x===3){
+    //segments[numberFood]= new Snake(segments[numberFood-1].loc.x-segments[numberFood-1].w,segments[numberFood-1].loc.y,3,0,25,color(255,0,0),numberFood);
+  //}
+  //if(segments[numberFood-1].vel.x===-3){
+    //segments[numberFood]= new Snake(segments[numberFood-1].loc.x+segments[numberFood-1].w,segments[numberFood-1].loc.y,-3,0,25,color(255,0,0),numberFood);
+  //}
+  //if(segments[numberFood-1].vel.y===3){
+    //segments[numberFood]= new Snake(segments[numberFood-1].loc.x,segments[numberFood-1].loc.y-segments[numberFood-1].w,0,3,25,color(255,0,0),numberFood);
+  //}
+  //if(segments[numberFood-1].vel.y===-3){
+    //segments[numberFood]= new Snake(segments[numberFood-1].loc.x,segments[numberFood-1].loc.y+segments[numberFood-1].w,0,-3,25,color(255,0,0),numberFood);
+  //}
+//}

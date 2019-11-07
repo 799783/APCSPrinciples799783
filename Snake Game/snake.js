@@ -21,7 +21,10 @@ class Snake{
 
   render(){
     fill(this.clr);
-    rect(this.loc.x,this.loc.y,this.w,this.w);
+    rect(this.loc.x*this.w,this.loc.y*this.w,this.w,this.w);
+    for (var i=0; i<this.body.length; i++){
+      rect(this.body[i].loc.x*this.w,this.body[i].loc.y*this.w, this.w, this.w);
+    }
   }
 
 checkEdges(){
@@ -29,7 +32,7 @@ checkEdges(){
   if(this.loc.x<0){
     endGame='yes';
   }
-  if(this.loc.x>width){
+  if(this.loc.x>width/this.w){
     //if hits right side
     endGame='yes';
   }
@@ -37,68 +40,46 @@ checkEdges(){
     //if hits top
     endGame='yes';
   }
-  if(this.loc.y>height){
+  if(this.loc.y>height/this.w){
     //if hits bottom
     endGame='yes';
   }
 }
 
   update(){
-    if(keyIsPressed){
-      if (keyCode===RIGHT_ARROW){
-        for(var i=0; i<segments.length;i++){
-          if(segments[i].loc.y===yTurnLocation){
-            segments[i].vel.x=3;
-            segments[i].vel.y=0;
-          }
-        }
+    if(keyIsPressed&&
+      keyCode===RIGHT_ARROW){
+        head.vel.x=1;
+        head.vel.y=0;
       }
-      if (keyCode===LEFT_ARROW){
-        for(var i=0; i<segments.length;i++){
-          if(segments[i].loc.y===yTurnLocation){
-            segments[i].vel.x=-3;
-            segments[i].vel.y=0;
-          }
+      if(keyIsPressed&&
+        keyCode===LEFT_ARROW){
+          head.vel.x=-1;
+          head.vel.y=0;
         }
-      }
-      if (keyCode===UP_ARROW){
-        for(var i=0; i<segments.length;i++){
-          if(segments[i].loc.x===xTurnLocation){
-            segments[i].vel.x=0;
-            segments[i].vel.y=-3;
+        if(keyIsPressed&&
+          keyCode===UP_ARROW){
+            head.vel.x=0;
+            head.vel.y=1;
           }
-        }
-      }
-      if (keyCode===DOWN_ARROW){
-        for(var i=0; i<segments.length;i++){
-          if(segments[i].loc.x===xTurnLocation){
-            segments[i].vel.x=0;
-            segments[i].vel.y=3;
-          }
-        }
-      }
-    }
-    this.loc.add(this.vel);
+          if(keyIsPressed&&
+            keyCode===DOWN_ARROW){
+              head.vel.x=0;
+              head.vel.y=-1;
+            }
+    head.loc.add(this.vel);
   }
 
 tangled(){
 
 }
+
 hitFood(){
   for (var i=0; i<food.length;i++){
-    if(this.loc.x>food[i].loc.x&&
-        this.loc.x<food[i].loc.x+food[i].w&&
-        this.loc.y>food[i].loc.y&&
-        this.loc.y<food[i].loc.y+food[i].w){
+    if(this.loc.x===food[i].loc.x&&
+        this.loc.y===food[i].loc.y){
           food.splice(i,1);
-          hitFood='yes';
-        }
-      else if(this.loc.x+this.w>food[i].loc.x&&
-        this.loc.x+this.w<food[i].loc.x+food[i].w&&
-        this.loc.y+this.w>food[i].loc.y&&
-        this.loc.y+this.w<food[i].loc.y+food[i].w){
-          food.splice(i,1);
-          hitFood='yes';
+
         }
   }
     }
