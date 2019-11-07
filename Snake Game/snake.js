@@ -3,18 +3,19 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 class Snake{
-  constructor(x,y,dx,dy,w,c,id){
+  constructor(x,y,dx,dy,w,c){
     this.loc=createVector(x,y);
     this.vel=createVector(dx,dy);
     this.w=w;
     this.clr=c;
-    this.id=id;
+    this.body=[];
   }
 
   run(){
     this.render();
     this.checkEdges();
     this.update();
+    this.tangled();
     this.hitFood();
   }
 
@@ -80,7 +81,10 @@ checkEdges(){
     this.loc.add(this.vel);
   }
 
-    hitFood(){
+tangled(){
+
+}
+hitFood(){
   for (var i=0; i<food.length;i++){
     if(this.loc.x>food[i].loc.x&&
         this.loc.x<food[i].loc.x+food[i].w&&
