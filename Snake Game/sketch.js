@@ -3,7 +3,6 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 segments=[];
-hitFood='no';
 numberFood=0;
 food=[];
 score=0;
@@ -13,8 +12,10 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
   endGame='no';
+  hitFood='no';
   loadHead();
   loadFood();
+  frameRate(14);
 }
 
 function draw() {
@@ -31,11 +32,11 @@ if(hitFood==='yes'){
 }
 
 function loadHead(){
-  head=new Snake(0,0,0,0,25,color(255,0,0));
+  head=new Snake(0,0,0,0,10,color(255,0,0));
 }
 
 function loadFood(){
-  food[0]= new Food(random(800),random(800),25,0);
+  food[0]= new Food(int(random(80)),int(random(80)),10,0);
 }
 
 function runFood(){
@@ -46,9 +47,7 @@ function runFood(){
 
 function runSnake(){
   background(20,20,20);
-  for (var i=0; i<segments.length; i++){
-    segments[i].run();
-  }
+  head.run();
 }
 
 //function addSegments(){

@@ -60,14 +60,18 @@ checkEdges(){
         if(keyIsPressed&&
           keyCode===UP_ARROW){
             head.vel.x=0;
-            head.vel.y=1;
+            head.vel.y=-1;
           }
           if(keyIsPressed&&
             keyCode===DOWN_ARROW){
               head.vel.x=0;
-              head.vel.y=-1;
+              head.vel.y=1;
             }
+    for (var i=this.body.length; i>0; i--){
+      this.body.loc.add(this.vel);
+    }
     head.loc.add(this.vel);
+
   }
 
 tangled(){
@@ -75,12 +79,11 @@ tangled(){
 }
 
 hitFood(){
-  for (var i=0; i<food.length;i++){
-    if(this.loc.x===food[i].loc.x&&
-        this.loc.y===food[i].loc.y){
-          food.splice(i,1);
-
-        }
+    if(head.loc.x===food[numberFood].loc.x&&
+        head.loc.y===food[numberFood].loc.y){
+          food.splice(numberFood,1);
+          this.body.push(createVector(head.loc.x,head.loc.y));
+          hitFood='yes';
   }
     }
 }
