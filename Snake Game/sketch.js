@@ -21,10 +21,11 @@ function setup() {
 function draw() {
   runSnake();
   runFood();
-if(hitFood==='yes'){
-  numberFood=numberFood+1;
-  hitFood='no'
-}
+  if(hitFood==='yes'){
+    numberFood=numberFood+1;
+    addFood();
+    hitFood='no';
+  }
 //if (endGame==='yes'){
   //remove();
   //clear();
@@ -50,6 +51,13 @@ function runSnake(){
   head.run();
 }
 
+function addFood(){
+  for (var i=numberFood; i>0;i--){
+    if(food[i-1]===1){
+      food[i]= new Food(int(random(80)),int(random(80)),10,0);
+    }
+  }
+}
 //function addSegments(){
   //if(segments[numberFood-1].vel.x===3){
     //segments[numberFood]= new Snake(segments[numberFood-1].loc.x-segments[numberFood-1].w,segments[numberFood-1].loc.y,3,0,25,color(255,0,0),numberFood);

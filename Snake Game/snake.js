@@ -23,7 +23,7 @@ class Snake{
     fill(this.clr);
     rect(this.loc.x*this.w,this.loc.y*this.w,this.w,this.w);
     for (var i=0; i<this.body.length; i++){
-      rect(this.body[i].loc.x*this.w,this.body[i].loc.y*this.w, this.w, this.w);
+      rect(this.body[i].x*this.w,this.body[i].y*this.w, this.w, this.w);
     }
   }
 
@@ -67,8 +67,9 @@ checkEdges(){
               head.vel.x=0;
               head.vel.y=1;
             }
-    for (var i=this.body.length; i>0; i--){
-      this.body.loc.add(this.vel);
+    for (var i=this.body.length-1; i>0; i--){
+      this.body[i].x.add(this.vel.x);
+      this.body[i].y.add(this.vel.y);
     }
     head.loc.add(this.vel);
 
@@ -79,6 +80,7 @@ tangled(){
 }
 
 hitFood(){
+  console.log(food[numberFood].loc.x);
     if(head.loc.x===food[numberFood].loc.x&&
         head.loc.y===food[numberFood].loc.y){
           food.splice(numberFood,1);

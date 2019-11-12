@@ -23,6 +23,6 @@ class Food{
 
   update(){
 
-  }
+    }
 
 }
