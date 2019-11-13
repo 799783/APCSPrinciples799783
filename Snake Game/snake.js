@@ -67,23 +67,30 @@ checkEdges(){
               head.vel.x=0;
               head.vel.y=1;
             }
-    for (var i=this.body.length-1; i>0; i--){
-      this.body[i].x.add(this.vel.x);
-      this.body[i].y.add(this.vel.y);
+    if(this.body.length>0){
+      for (var i=this.body.length-1; i>0; i--){
+        this.body[i].x=this.body[i-1].x;
+        this.body[i].y=this.body[i-1].y;
+      }
+      this.body[0].x=head.loc.x;
+      this.body[0].y=head.loc.y;
     }
     head.loc.add(this.vel);
 
   }
 
 tangled(){
-
+for (var i=0; i<this.body.length; i++){
+  if (head.loc.x===this.body[i].x||head.loc.y===this.body[i].y){
+    endGame='yes';
+  }
+}
 }
 
 hitFood(){
-  console.log(food[numberFood].loc.x);
-    if(head.loc.x===food[numberFood].loc.x&&
-        head.loc.y===food[numberFood].loc.y){
-          food.splice(numberFood,1);
+    if(head.loc.x===food[0].loc.x&&
+        head.loc.y===food[0].loc.y){
+          food[0]= new Food(int(random(80)),int(random(80)),10,0);
           this.body.push(createVector(head.loc.x,head.loc.y));
           hitFood='yes';
   }
