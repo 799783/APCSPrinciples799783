@@ -81,7 +81,7 @@ checkEdges(){
 
 tangled(){
 for (var i=0; i<this.body.length; i++){
-  if (head.loc.x===this.body[i].x||head.loc.y===this.body[i].y){
+  if (head.loc.x===this.body[i].x&&head.loc.y===this.body[i].y){
     endGame='yes';
   }
 }
