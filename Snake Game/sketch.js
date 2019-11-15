@@ -69,7 +69,11 @@ if (endGame==='yes'){
 }
 
 function finalScreen(){
-  
+  background(20,20,20);
+  textSize(25);
+  fill(255,0,0);
+  text('You lost! Wow that sucks! You got a score of '+ numberFood, 0,200);
+  text('Woah, that is pretty impressive! Good Job!',0,225)
 }
 
 function loadHead(){
