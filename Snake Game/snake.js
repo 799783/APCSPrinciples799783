@@ -49,23 +49,23 @@ checkEdges(){
   update(){
     if(keyIsPressed&&
       keyCode===RIGHT_ARROW){
-        head.vel.x=1;
-        head.vel.y=0;
+          head.vel.x=1;
+          head.vel.y=0;
       }
       if(keyIsPressed&&
         keyCode===LEFT_ARROW){
-          head.vel.x=-1;
-          head.vel.y=0;
+            head.vel.x=-1;
+            head.vel.y=0;
         }
         if(keyIsPressed&&
           keyCode===UP_ARROW){
-            head.vel.x=0;
-            head.vel.y=-1;
+              head.vel.x=0;
+              head.vel.y=-1;
           }
           if(keyIsPressed&&
             keyCode===DOWN_ARROW){
-              head.vel.x=0;
-              head.vel.y=1;
+                head.vel.x=0;
+                head.vel.y=1;
             }
     if(this.body.length>0){
       for (var i=this.body.length-1; i>0; i--){

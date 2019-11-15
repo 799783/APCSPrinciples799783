@@ -7,6 +7,10 @@ numberFood=0;
 food=[];
 score=0;
 gameState=1;
+let img;
+function preload(){
+  img= loadImage('https://calbears.com/images/2019/8/23/Untrecht_Sam.jpg')
+}
 function setup() {
   // put setup code here
   var cnv = createCanvas(800, 800);
@@ -72,8 +76,8 @@ function finalScreen(){
   background(20,20,20);
   textSize(25);
   fill(255,0,0);
-  text('You lost! Wow that sucks! You got a score of '+ numberFood, 0,200);
-  text('Woah, that is pretty impressive! Good Job!',0,225)
+  text('You lost! Wow that sucks! You got a score of '+ numberFood, 175,200);
+  text('Woah, that is pretty impressive! Good Job!',175,225)
 }
 
 function loadHead(){
