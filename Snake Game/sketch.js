@@ -7,10 +7,12 @@ numberFood=0;
 food=[];
 score=0;
 gameState=1;
-let img;
+var img;
+
 function preload(){
-  img= loadImage('https://calbears.com/images/2019/8/23/Untrecht_Sam.jpg')
+  img=loadImage('Untrecht_Sam_square.jpg');
 }
+
 function setup() {
   // put setup code here
   var cnv = createCanvas(800, 800);
