@@ -10,7 +10,7 @@ gameState=1;
 var img;
 
 function preload(){
-  img=loadImage('Untrecht_Sam_square.jpg');
+  img=loadImage('emoji.png');
 }
 
 function setup() {

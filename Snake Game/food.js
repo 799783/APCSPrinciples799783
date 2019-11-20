@@ -19,7 +19,7 @@ class Food{
   render(){
     //fill(this.clr);
     //rect(this.loc.x*this.w,this.loc.y*this.w,this.w,this.w);
-    image(img,this.loc.x,this.loc.y);
+    image(img,this.loc.x*this.w,this.loc.y*this.w);
   }
 
   update(){
