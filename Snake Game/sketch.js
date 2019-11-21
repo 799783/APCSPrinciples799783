@@ -1,5 +1,5 @@
 //  Joe Untrecht
-// 	9/16 Paddle Game
+// 	9/16 Snake Game
 //  This is a comment
 //  The setup function function is called once when your program begins
 segments=[];
