@@ -27,17 +27,18 @@ class Ship{
     dist=this.loc.dist(planet.loc);
     this.acc=p5.Vector.sub(planet.loc,this.loc)
     this.acc.normalize();
-    this.acc.mult(5);
+    this.acc.mult(.5);
     this.vel.add(this.acc);
-    this.vel.limit(5);
+    this.vel.limit(3);
     this.loc.add(this.vel);
   }
 
   render(){
+    this.heading=this.vel.heading();
       fill(this.clr);
       push();
         translate(this.loc.x,this.loc.y);
-        rotate(this.loc.heading);
+        rotate(this.heading +1.5);
         triangle(-10,16,10,16,0,-16);
       pop();
     }

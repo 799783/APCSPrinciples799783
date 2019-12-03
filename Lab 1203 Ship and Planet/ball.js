@@ -32,7 +32,7 @@ class Ball{
   }
 
   update(){
-    if(dist<50){
+    if(dist<100){
       this.loc=createVector(random(width),random(height))
     }
     //var distToMainBallatt
