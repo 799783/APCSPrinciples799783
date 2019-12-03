@@ -1,5 +1,6 @@
 //Joe Untrecht
-//828 Vector
+//1203 Vector
+//ship.js
 var dist;
 class Ship{
   constructor(x,y,dx,dy){
@@ -17,6 +18,7 @@ class Ship{
     this.update();
   }
   checkEdges(){
+    //teleports ship if they hit edges
     if(this.loc.x<0 ) this.loc.x=width;
     if(this.loc.x>width) this.loc.x=0;
     if(this.loc.y<0 ) this.loc.y=height;
@@ -25,6 +27,7 @@ class Ship{
 
   update(){
     dist=this.loc.dist(planet.loc);
+    //ships move according to planet's position
     this.acc=p5.Vector.sub(planet.loc,this.loc)
     this.acc.normalize();
     this.acc.mult(.5);
@@ -34,9 +37,11 @@ class Ship{
   }
 
   render(){
+    //renders ship
     this.heading=this.vel.heading();
       fill(this.clr);
       push();
+      //rotates and translates ship
         translate(this.loc.x,this.loc.y);
         rotate(this.heading +1.5);
         triangle(-10,16,10,16,0,-16);

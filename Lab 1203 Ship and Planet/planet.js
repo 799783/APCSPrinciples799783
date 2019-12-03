@@ -1,6 +1,7 @@
 //Joe Untrecht
-//828 Vector
-class Ball{
+//12/03 Vector
+//ball.js
+class Planet{
   constructor(x,y,dx,dy){
     this.loc= createVector(x,y);
     this.vel = createVector(dx,dy);
@@ -16,6 +17,7 @@ class Ball{
     this.update();
   }
   checkEdges(){
+    //teleports planet if it hits any edges
     if(this.loc.x>800){
       this.loc.x=0;
     }
@@ -32,32 +34,19 @@ class Ball{
   }
 
   update(){
+    //if the ship gets close to planet
     if(dist<100){
-      this.loc=createVector(random(width),random(height))
+      //planets changes location and velocity randomly
+      this.loc=createVector(random(width),random(height));
+      this.vel=createVector(random(-3,3),random(-3,3));
     }
-    //var distToMainBallatt
-    //var distToMainBallrep
-//    if(this.id >= 0){
-  //    distToMainBallatt = this.loc.dist(attractor.loc);
-//      distToMainBallrep = this.loc.dist(repeller.loc);
-//      if (distToMainBallatt<500){
-//        //attraction
-//        this.acc= p5.Vector.sub(mainBallatt.loc,this.loc);
-//        this.acc.normalize();
-  //      this.acc.mult(.5);
-//      }
-//      if(distToMainBallrep<200){
-        //repulsion
-//        this.acc=p5.Vector.sub(this.loc,mainBallrep.loc);
-//        this.acc.normalize();
-//        this.acc.mult(0.5);
-//      }
-//    }
-    this.vel.limit(5);
+    //planet moves
+    this.vel.limit(3);
     this.loc.add(this.vel);
     this.vel.add(this.acc);
   }
   render(){
+    //renders planet
       fill(this.clr);
       ellipse(this.loc.x, this.loc.y, this.w, this.w);
     }

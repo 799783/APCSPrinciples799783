@@ -1,7 +1,8 @@
 //  Joe Untrecht
-// 	8/28 Vector
+// 12/03 Vector
 //  This is a comment
 //  The setup function function is called once when your program begins
+//sketch
 function setup() {
   // put setup code here
   var cnv = createCanvas(800, 800);
@@ -12,16 +13,21 @@ function setup() {
 
 function draw() {
   background(5,5,5,50);
+  //runs ship and planet
   runObjects();
 }
 
 function loadObjects(n){
-  planet= new Ball(width/2,height/2,random(-1,1),random(-1,1),-1);
+  //loads planet
+  planet= new Planet(width/2,height/2,random(-3,3),random(-3,3),-1);
+  //loads ship
   ship= new Ship(random(width), random(height), random(-2,2), random(-2,2));
 
 }
 
 function runObjects(){
+  //runs planet
   planet.run();
+  //runs ship
   ship.run();
 }
