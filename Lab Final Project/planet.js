@@ -35,11 +35,6 @@ class Planet{
 
   update(){
     //if the ship gets close to planet
-    if(dist<100){
-      //planets changes location and velocity randomly
-      this.loc=createVector(random(width),random(height));
-      this.vel=createVector(random(-3,3),random(-3,3));
-    }
     //planet moves
     this.vel.limit(3);
     this.loc.add(this.vel);

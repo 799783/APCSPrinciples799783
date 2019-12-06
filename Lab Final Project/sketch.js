@@ -3,8 +3,7 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 //sketch
-planet=[];
-ships=[];
+ship=[];
 function setup() {
   // put setup code here
   var cnv = createCanvas(800, 800);
@@ -24,7 +23,7 @@ function loadObjects(n){
     planet=  new Planet(width/2,height/2,random(-3,3),random(-3,3));
 
   //loads ship
-  for (var i=0; i>10; i++){
+  for (var i=0; i<10; i++){
     ship[i]=new Ship(random(width), random(height), random(-2,2), random(-2,2));
   }
 
@@ -34,5 +33,7 @@ function runObjects(){
   //runs planet
   planet.run();
   //runs ship
-  ship.run();
+  for (var i=0; i<ship.length; i++){
+    ship[i].run();
+  }
 }

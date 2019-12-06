@@ -1,7 +1,7 @@
 //Joe Untrecht
 //1203 Vector
 //ship.js
-var dist;
+
 class Ship{
   constructor(x,y,dx,dy){
     this.loc= createVector(x,y);
@@ -26,7 +26,6 @@ class Ship{
   }
 
   update(){
-    dist=this.loc.dist(planet.loc);
     //ships move according to planet's position
     this.acc=p5.Vector.sub(planet.loc,this.loc)
     this.acc.normalize();
@@ -34,6 +33,11 @@ class Ship{
     this.vel.add(this.acc);
     this.vel.limit(3);
     this.loc.add(this.vel);
+    if ((this.loc.dist(planet.loc))<20){
+      this.loc=createVector(random(800),random(800));
+      planet.loc=createVector(random(width),random(height));
+      planet.vel=createVector(random(-3,3),random(-3,3));
+    }
   }
 
   render(){
