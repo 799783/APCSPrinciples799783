@@ -25,13 +25,7 @@ function logNumber(){
   console.log(list);
 }
 
-function findAv(){
-  sum=0;
-  for (var i=0; i<11; i++){
-    sum=(sum+list[i]);
-  }
-  console.log(sum/list.length);
-}
+
 
 function findMedian(){
   console.log(list[(list.length-1)/2])

@@ -1,5 +1,5 @@
 //Joe Untrecht
-//12/03 Vector
+//12/12
 //ball.js
 class Planet{
   constructor(x,y,dx,dy){

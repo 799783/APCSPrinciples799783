@@ -1,5 +1,5 @@
 //Joe Untrecht
-//1203 Vector
+//1212 Vector
 //ship.js
 
 class Ship{
@@ -29,9 +29,9 @@ class Ship{
     //ships move according to planet's position
     this.acc=p5.Vector.sub(planet.loc,this.loc)
     this.acc.normalize();
-    this.acc.mult(.5);
+    this.acc.mult(sliderAttraction.value());
     this.vel.add(this.acc);
-    this.vel.limit(3);
+    this.vel.limit(sliderLimit.value());
     this.loc.add(this.vel);
     if ((this.loc.dist(planet.loc))<20){
       this.loc=createVector(random(800),random(800));
@@ -53,4 +53,3 @@ class Ship{
     }
 
 }
-//end ball class
